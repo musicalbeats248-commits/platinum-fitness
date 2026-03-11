@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Platinum Fitness Club – 5KG Challenge</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #f5c518;
+  --gold2: #e8a800;
+  --dark: #0d0d0d;
+  --dark2: #161616;
+  --card: #1c1c1c;
+  --border: #2e2e2e;
+  --text: #f0f0f0;
+  --muted: #888;
+  --fire: #ff4d1c;
+  --green: #39d98a;
+  --red: #ff5252;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(245,197,24,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(255,77,28,0.07) 0%, transparent 55%);
+}
+
+/* ====== HERO HEADER ====== */
+.hero {
+  text-align: center;
+  padding: 52px 20px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(245,197,24,0.03) 0px,
+    rgba(245,197,24,0.03) 1px,
+    transparent 1px,
+    transparent 60px
+  );
+  pointer-events: none;
+}
+.club-label {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #fff 0%, #ccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--gold), var(--fire));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.hero .desc {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+.day-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(57,217,138,0.12);
+  border: 1px solid rgba(57,217,138,0.3);
+  color: var(--green);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ====== NAV TABS ====== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px 30px;
+}
+.tab {
+  padding: 10px 28px;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.tab.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--dark);
+  border-color: transparent;
+}
+.tab:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 480px) {
+  .tabs {
+    gap: 6px;
+    padding: 0 12px 22px;
+  }
+  .tab {
+    flex: 1;
+    padding: 9px 4px;
+    font-size: 0.7rem;
+    letter-spacing: 0;
+    text-align: center;
+    border-radius: 12px;
+  }
+}
+
+/* ====== PAGES ====== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ====== FORM ====== */
+.form-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin: 32px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field label .req { color: var(--fire); margin-left: 3px; }
+
+.field input[type="text"],
+.field input[type="number"],
+.field input[type="date"],
+.field select,
+.field textarea {
+  background: var(--dark2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 11px 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(245,197,24,0.1);
+}
+.field select option { background: var(--dark2); }
+.field textarea { resize: vertical; min-height: 70px; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* RADIO PILLS */
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill-opt {
+  position: relative;
+}
+.pill-opt input { display: none; }
+.pill-opt label {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: none;
+  letter-spacing: 0.3px;
+}
+.pill-opt input:checked + label {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--dark);
+  border-color: transparent;
+}
+.pill-opt label:hover { border-color: var(--gold); color: var(--gold); }
+
+/* RANGE SLIDER */
+.range-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(245,197,24,0.4);
+}
+.range-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  min-width: 36px;
+  text-align: center;
+}
+
+/* IMAGE UPLOAD */
+.img-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+.img-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.img-slot-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+.img-drop {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  background: var(--dark2);
+}
+.img-drop:hover { border-color: var(--gold); background: rgba(245,197,24,0.06); }
+.img-drop .upload-icon { font-size: 1.8rem; margin-bottom: 4px; pointer-events: none; }
+.img-drop .upload-text { font-size: 0.68rem; color: var(--muted); font-weight: 700; pointer-events: none; text-align: center; padding: 0 4px; }
+/* Hidden real file input — triggered by JS */
+.img-drop input[type="file"] { display: none; }
+/* Preview image */
+.img-drop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: none;
+}
+.img-drop.has-img img { display: block; }
+.img-drop.has-img .upload-icon,
+.img-drop.has-img .upload-text { display: none; }
+/* Remove button */
+.remove-img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0,0,0,0.75);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  line-height: 1;
+}
+.img-drop.has-img .remove-img { display: flex; }
+
+/* SUBMIT */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--gold), var(--fire));
+  color: var(--dark);
+  border: none;
+  border-radius: 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+  margin-top: 8px;
+}
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(245,197,24,0.3);
+}
+.submit-btn:disabled {
+  background: #2e2e2e;
+  color: #555;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.form-progress-bar {
+  height: 4px;
+  background: #2e2e2e;
+  border-radius: 2px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+.form-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--fire));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+.form-ready-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #555;
+  margin-top: 8px;
+  transition: color 0.3s;
+}
+.form-ready-hint.ready { color: var(--green); }
+
+/* ====== PROGRESS WALL ====== */
+.progress-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.progress-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+.count-pill {
+  background: rgba(245,197,24,0.12);
+  border: 1px solid rgba(245,197,24,0.3);
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+}
+.empty-wall {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--muted);
+}
+.empty-wall .ei { font-size: 3.5rem; margin-bottom: 14px; }
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* PROGRESS CARD */
+.progress-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeUp 0.4s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.progress-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.card-top {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--fire));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+.card-name { font-size: 1rem; font-weight: 800; line-height: 1.2; }
+.card-age { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+
+.weight-bar {
+  padding: 16px 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.w-stat {
+  flex: 1;
+  text-align: center;
+}
+.w-stat .val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.w-stat .lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+.w-divider { width: 1px; height: 40px; background: var(--border); }
+.lost-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--green);
+}
+.lost-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--green); font-weight: 700; opacity: 0.8; }
+
+.card-stats {
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.stat-chip {
+  background: var(--dark2);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.stat-chip .sc-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin-bottom: 3px; }
+.stat-chip .sc-val { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+
+/* PHOTO STRIP */
+.photo-strip {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.photo-strip-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 8px; }
+.photo-strip-imgs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.strip-img-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.strip-img-wrap img {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.strip-img-wrap img:hover { border-color: var(--gold); }
+.strip-img-lbl { font-size: 0.58rem; color: var(--muted); text-align: center; font-weight: 600; max-width: 54px; line-height: 1.2; }
+
+.card-footer {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.motivation-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.motivation-bar .mb-label { font-size: 0.7rem; color: var(--muted); font-weight: 700; }
+.motivation-dots {
+  display: flex;
+  gap: 3px;
+}
+.motivation-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s;
+}
+.motivation-dots span.active { background: var(--gold); }
+.card-time { font-size: 0.7rem; color: var(--muted); font-weight: 600; }
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; object-fit: contain; }
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--green);
+  color: var(--dark);
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 9999;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+@media (max-width: 600px) {
+  .two-col { grid-template-columns: 1fr; }
+  .img-upload-grid { grid-template-columns: repeat(3, 1fr); }
+  .progress-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ====== NEW SUBMISSION CARDS (matches reference image) ====== */
+.progress-wrap {
+  background: #f2ede4;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 20px 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.progress-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+.count-pill {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.lock-btn {
+  background: white;
+  border: 1.5px solid #ddd;
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lock-btn:hover { background: #f5f5f5; }
+
+.progress-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ══════════════════════════════════
+   PROGRESS CARD  — Professional
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.new-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  animation: fadeUp 0.4s ease both;
+  border: 1px solid #ede8df;
+}
+
+/* ── CARD HEADER ── */
+.nc-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 18px 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
+.nc-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f5c518, #ff6b35, #f5c518);
+}
+.nc-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5c518, #ff6b35);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; color: #1a1a1a;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(245,197,24,0.4);
+}
+.nc-header-info { flex: 1; min-width: 0; }
+.nc-name {
+  font-size: 1.1rem; font-weight: 900;
+  color: #ffffff; margin-bottom: 2px;
+  letter-spacing: 0.2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.nc-meta { font-size: 0.72rem; color: #999; font-weight: 600; }
+.nc-lost-badge {
+  text-align: center;
+  background: rgba(245,197,24,0.12);
+  border: 1.5px solid rgba(245,197,24,0.3);
+  border-radius: 12px;
+  padding: 6px 12px;
+  min-width: 64px;
+  flex-shrink: 0;
+}
+.nc-lost-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem; line-height: 1;
+}
+.nc-lost-lbl { font-size: 0.6rem; font-weight: 800; color: #aaa; letter-spacing: 0.8px; text-transform: uppercase; margin-top: 1px; }
+
+/* ── WEIGHT ROW ── */
+.nc-weight-row {
+  display: flex;
+  align-items: center;
+  background: #fafaf8;
+  border-bottom: 1px solid #ede8df;
+  padding: 12px 20px;
+  gap: 0;
+}
+.nc-w-box { flex: 1; text-align: center; }
+.nc-w-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; line-height: 1; color: #1a1a1a;
+}
+.nc-w-lbl { font-size: 0.6rem; font-weight: 800; color: #bbb; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+.nc-w-arrow {
+  font-size: 1rem; color: #ccc; padding: 0 6px;
+}
+
+/* ── STATS GRID ── */
+.nc-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 4px 0;
+  border-bottom: 1px solid #ede8df;
+}
+.nc-stat-item {
+  padding: 10px 18px;
+  border-bottom: 1px solid #f5f0e8;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nc-stat-item:nth-child(odd) { border-right: 1px solid #f5f0e8; }
+.nc-stat-item.full-width {
+  grid-column: 1 / -1;
+  border-right: none;
+}
+.nc-stat-lbl {
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #bbb;
+}
+.nc-stat-val {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+.nc-stat-val.diet-yes  { color: #27ae60; }
+.nc-stat-val.diet-no   { color: #e74c3c; }
+.nc-stat-val.diet-part { color: #e67e22; }
+.nc-stat-val.energy-high { color: #27ae60; }
+.nc-stat-val.energy-mod  { color: #e67e22; }
+.nc-stat-val.energy-low  { color: #e74c3c; }
+
+/* ── MOTIVATION BAR ── */
+.nc-mot-bar-wrap {
+  padding: 12px 18px;
+  border-bottom: 1px solid #ede8df;
+}
+.nc-mot-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 6px;
+}
+.nc-mot-lbl { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #bbb; }
+.nc-mot-num { font-size: 0.8rem; font-weight: 900; color: #f5c518; }
+.nc-mot-bg { height: 6px; background: #f0ebe0; border-radius: 3px; overflow: hidden; }
+.nc-mot-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f5c518, #ff6b35);
+  transition: width 0.6s ease;
+}
+
+/* ── REFLECTION BUBBLES ── */
+.nc-reflections { padding: 12px 18px; border-bottom: 1px solid #ede8df; display: flex; flex-direction: column; gap: 8px; }
+.nc-bubble {
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+.nc-bubble-challenge {
+  background: #f5f5f5;
+  border-left: 3px solid #bbb;
+  color: #444;
+}
+.nc-bubble-goal {
+  background: #fffbf0;
+  border-left: 3px solid #f5c518;
+  color: #7a5c00;
+}
+.nc-bubble-lbl {
+  font-size: 0.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 3px;
+  opacity: 0.6;
+}
+
+/* ── PHOTO STRIP ── */
+.nc-photos { padding: 12px 18px; border-bottom: 1px solid #ede8df; }
+.nc-photos-title {
+  font-size: 0.6rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: #bbb; margin-bottom: 10px;
+}
+.nc-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+.nc-photo-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.nc-photo-item img {
+  width: 100%; aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid #ede8df;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.nc-photo-item img:hover { transform: scale(1.06); border-color: #f5c518; }
+.nc-photo-lbl { font-size: 0.55rem; font-weight: 700; color: #bbb; text-align: center; line-height: 1.2; }
+
+/* ── SHARE BUTTON ── */
+.nc-share-btn {
+  display: block; width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white; border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem; font-weight: 800;
+  cursor: pointer; letter-spacing: 0.3px;
+  transition: all 0.2s;
+}
+.nc-share-btn:hover {
+  background: linear-gradient(135deg, #219a55, #27ae60);
+  box-shadow: 0 4px 16px rgba(39,174,96,0.35);
+}
+
+/* Empty state on light bg */
+.empty-wall { background: transparent; color: #aaa; }
+
+
+
+/* ====== LEADERBOARD ====== */
+.lb-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+  background: #f2ede4;
+  min-height: 100vh;
+}
+.lb-banner {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin: 20px 0 24px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.lb-banner-inner {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.lb-count-box { text-align: center; }
+.lb-count-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  background: linear-gradient(135deg, #f5c518, #ff4d1c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.lb-count-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #888;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+.lb-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+.lb-subtitle {
+  font-size: 0.8rem;
+  color: #aaa;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* LEADERBOARD ROWS */
+.lb-row {
+  background: white;
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  animation: fadeUp 0.3s ease both;
+}
+.lb-row.top1 { background: linear-gradient(135deg, #fff9e6, #fff3cc); border: 2px solid #f5c518; }
+.lb-row.top2 { background: linear-gradient(135deg, #f5f5f5, #ebebeb); border: 2px solid #bbb; }
+.lb-row.top3 { background: linear-gradient(135deg, #fff4ee, #ffe8dc); border: 2px solid #cd7f32; }
+
+.lb-rank {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  min-width: 38px;
+  text-align: center;
+  line-height: 1;
+}
+.lb-rank.r1 { color: #f5c518; }
+.lb-rank.r2 { color: #aaa; }
+.lb-rank.r3 { color: #cd7f32; }
+.lb-rank.rn { color: #ccc; font-size: 1.3rem; }
+
+.lb-medal { font-size: 1.8rem; min-width: 32px; text-align: center; }
+
+.lb-info { flex: 1; }
+.lb-name { font-size: 1rem; font-weight: 900; color: #1a1a1a; }
+.lb-meta { font-size: 0.75rem; color: #aaa; font-weight: 600; margin-top: 2px; }
+.lb-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.badge-top { background: #fff3cd; color: #856404; }
+.badge-most { background: #d4edda; color: #155724; }
+
+.lb-lost {
+  text-align: right;
+}
+.lb-lost-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #e67e22;
+}
+.lb-row.top1 .lb-lost-num { color: #f5c518; }
+.lb-lost-unit { font-size: 0.7rem; font-weight: 800; color: #aaa; }
+
+/* Progress bar inside row */
+.lb-progress-wrap { margin-top: 8px; }
+.lb-progress-bg {
+  height: 5px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.lb-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f5c518, #ff4d1c);
+  transition: width 0.6s ease;
+}
+
+/* ====== SHARE MODAL ====== */
+.share-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9998;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+.share-overlay.open { display: flex; }
+.share-modal {
+  background: #1c1c1c;
+  border: 1px solid #2e2e2e;
+  border-radius: 24px;
+  padding: 36px 32px 30px;
+  width: 100%;
+  max-width: 460px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+  animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes popIn { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
+.share-modal .confetti { font-size: 2.8rem; margin-bottom: 10px; }
+.share-modal h3 { font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;color:#f0f0f0;margin-bottom:6px; }
+.share-modal .share-sub { color:#888;font-size:0.85rem;font-weight:600;margin-bottom:24px;line-height:1.5; }
+.share-preview { background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);border:1px solid #2e2e2e;border-radius:16px;padding:20px;margin-bottom:22px;text-align:left;position:relative;overflow:hidden; }
+.share-preview::before { content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f5c518,#ff4d1c); }
+.sp-club { font-size:0.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#f5c518;margin-bottom:8px; }
+.sp-name { font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:1px;color:#f0f0f0;margin-bottom:10px; }
+.sp-stats { display:flex;gap:10px;flex-wrap:wrap; }
+.sp-stat { background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.15);border-radius:8px;padding:6px 12px;font-size:0.78rem;font-weight:700;color:#f0f0f0; }
+.sp-stat span { color:#f5c518; }
+.sp-tag { margin-top:12px;font-size:0.72rem;color:#555;font-weight:600; }
+.share-btns { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px; }
+.share-btn { display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border:none;border-radius:12px;font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:800;cursor:pointer;transition:all 0.2s;text-decoration:none; }
+.share-btn:hover { transform:translateY(-2px);filter:brightness(1.1); }
+.btn-whatsapp { background:#25D366;color:white; }
+.btn-twitter  { background:#000;color:white;border:1px solid #333; }
+.btn-facebook { background:#1877F2;color:white; }
+.btn-instagram { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white; }
+.btn-copy { grid-column:1/-1;background:#2e2e2e;color:#f0f0f0;border:1px solid #444; }
+.btn-copy.copied { background:#39d98a;color:#0d0d0d; }
+.share-close-btn { background:none;border:none;color:#555;font-size:0.82rem;font-weight:700;cursor:pointer;padding:6px 14px;border-radius:8px;transition:color 0.2s;font-family:'Nunito',sans-serif; }
+.share-close-btn:hover { color:#f0f0f0; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero" id="main-app">
+  <div class="club-label">🏆 Platinum Fitness Club</div>
+  <h1>5KG Weight<br/><span>Loss Challenge</span></h1>
+  <div class="sub">Progress Tracker</div>
+  <div class="day-badge">🎉 Day <span id="challenge-day">10</span> of the Challenge</div>
+  <p class="desc">Hello everyone! Today marks Day <span id="challenge-day2">10</span> of our challenge. 🎉<br/>Fill your progress, track the leaderboard, and stay motivated!</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs" id="tabs-nav">
+  <button class="tab active" onclick="showPage('form-page', this)">📋 Fill Progress</button>
+  <button class="tab" onclick="showPage('wall-page', this)">🏅 Progress Wall</button>
+  <button class="tab" onclick="showPage('lb-page', this)">🏆 Leaderboard</button>
+</div>
+
+<div id="pages-wrap">
+<!-- FORM PAGE -->
+<div id="form-page" class="page active">
+<div class="form-wrap">
+
+  <!-- PERSONAL INFO -->
+  <div class="section-title">👤 Personal Info</div>
+  <div class="form-card">
+    <div class="two-col">
+      <div class="field">
+        <label>Name <span class="req">*</span></label>
+        <input type="text" id="f-name" placeholder="Your full name"/>
+      </div>
+      <div class="field">
+        <label>Age <span class="req">*</span></label>
+        <input type="number" id="f-age" placeholder="e.g. 28" min="10" max="99"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEIGHT -->
+  <div class="section-title">⚖️ Weight Progress</div>
+  <div class="form-card">
+    <div class="two-col">
+      <div class="field">
+        <label>Starting Weight – Day 1 (kg) <span class="req">*</span></label>
+        <input type="number" id="f-start-weight" placeholder="e.g. 78.5" step="0.1"/>
+      </div>
+      <div class="field">
+        <label>Current Weight – Day <span id="challenge-day3">10</span> (kg) <span class="req">*</span></label>
+        <input type="number" id="f-current-weight" placeholder="e.g. 76.0" step="0.1"/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Total Weight Lost So Far (kg)</label>
+      <input type="text" id="f-weight-lost" placeholder="Auto-calculated or enter manually" readonly style="color:var(--green);font-weight:800;"/>
+    </div>
+  </div>
+
+  <!-- DIET -->
+  <div class="section-title">🥗 Diet</div>
+  <div class="form-card">
+    <div class="field">
+      <label>Diet Plan Followed <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-opt"><input type="radio" name="diet" id="d-yes" value="Yes"/><label for="d-yes">✅ Yes</label></div>
+        <div class="pill-opt"><input type="radio" name="diet" id="d-no" value="No"/><label for="d-no">❌ No</label></div>
+        <div class="pill-opt"><input type="radio" name="diet" id="d-partial" value="Partially"/><label for="d-partial">⚡ Partially</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Diet Discipline Level <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-opt"><input type="radio" name="discipline" id="disc-ex" value="Excellent"/><label for="disc-ex">🌟 Excellent</label></div>
+        <div class="pill-opt"><input type="radio" name="discipline" id="disc-good" value="Good"/><label for="disc-good">👍 Good</label></div>
+        <div class="pill-opt"><input type="radio" name="discipline" id="disc-need" value="Need Improvement"/><label for="disc-need">📈 Need Improvement</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORKOUT -->
+  <div class="section-title">💪 Workout</div>
+  <div class="form-card">
+    <div class="field">
+      <label>Workout Done Daily <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-opt"><input type="radio" name="workout" id="w-yes" value="Yes"/><label for="w-yes">✅ Yes</label></div>
+        <div class="pill-opt"><input type="radio" name="workout" id="w-no" value="No"/><label for="w-no">❌ No</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Workout Type <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-opt"><input type="radio" name="wtype" id="wt-yoga" value="Yoga" onchange="toggleOtherWorkout(this)"/><label for="wt-yoga">🧘 Yoga</label></div>
+        <div class="pill-opt"><input type="radio" name="wtype" id="wt-walk" value="Walking" onchange="toggleOtherWorkout(this)"/><label for="wt-walk">🚶 Walking</label></div>
+        <div class="pill-opt"><input type="radio" name="wtype" id="wt-gym" value="Gym" onchange="toggleOtherWorkout(this)"/><label for="wt-gym">🏋️ Gym</label></div>
+        <div class="pill-opt"><input type="radio" name="wtype" id="wt-home" value="Home workout" onchange="toggleOtherWorkout(this)"/><label for="wt-home">🏠 Home Workout</label></div>
+        <div class="pill-opt"><input type="radio" name="wtype" id="wt-other" value="Other" onchange="toggleOtherWorkout(this)"/><label for="wt-other">🔥 Other</label></div>
+      </div>
+      <!-- Shown only when Other is selected -->
+      <div id="other-workout-field" style="display:none;margin-top:12px;">
+        <input type="text" id="f-other-workout" placeholder="e.g. Swimming, Cycling, Dance..." style="width:100%;padding:11px 15px;background:var(--dark2);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.92rem;font-weight:600;outline:none;transition:border-color 0.2s,box-shadow 0.2s;" onfocus="this.style.borderColor='#f5c518';this.style.boxShadow='0 0 0 3px rgba(245,197,24,0.1)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'" oninput="checkFormReady()"/>
+      </div>
+      <div style="display:none">
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="field">
+        <label>Workout Duration <span class="req">*</span></label>
+        <input type="text" id="f-duration" placeholder="e.g. 45 minutes"/>
+      </div>
+      <div class="field">
+        <label>Average Daily Steps</label>
+        <input type="number" id="f-steps" placeholder="e.g. 8000"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEALTH HABITS -->
+  <div class="section-title">💧 Health Habits</div>
+  <div class="form-card">
+    <div class="field">
+      <label>Water Intake Per Day</label>
+      <input type="text" id="f-water" placeholder="e.g. 3 litres"/>
+    </div>
+    <div class="field">
+      <label>Cheat Meals Taken <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-opt"><input type="radio" name="cheat_yn" id="cheat-yes" value="Yes" onchange="toggleCheatDetails(this)"/><label for="cheat-yes">✅ Yes</label></div>
+        <div class="pill-opt"><input type="radio" name="cheat_yn" id="cheat-no" value="No" onchange="toggleCheatDetails(this)"/><label for="cheat-no">❌ No</label></div>
+      </div>
+    </div>
+    <!-- Shown only if cheat = Yes -->
+    <div class="field" id="cheat-count-field" style="display:none;">
+      <label>How many cheat meals? <span class="req">*</span></label>
+      <input type="number" id="f-cheat-count" placeholder="e.g. 2" min="1"/>
+    </div>
+    <!-- Energy: only shown if cheat = Yes -->
+    <div class="field" id="energy-field" style="display:none;">
+      <label>Energy Level <span class="req">*</span></label>
+      <div class="pill-group">
+        <div class="pill-opt"><input type="radio" name="energy" id="en-low" value="Low"/><label for="en-low">😴 Low</label></div>
+        <div class="pill-opt"><input type="radio" name="energy" id="en-mod" value="Moderate"/><label for="en-mod">😊 Moderate</label></div>
+        <div class="pill-opt"><input type="radio" name="energy" id="en-high" value="High"/><label for="en-high">⚡ High</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFLECTION -->
+  <div class="section-title">💭 Reflection</div>
+  <div class="form-card">
+    <div class="field">
+      <label>Biggest Challenge You Faced</label>
+      <textarea id="f-challenge" placeholder="Describe your biggest challenge this week..."></textarea>
+    </div>
+    <div class="field">
+      <label>Your Goal Before Next Check-in</label>
+      <textarea id="f-goal" placeholder="What's your goal for the next checkpoint?"></textarea>
+    </div>
+    <div class="field">
+      <label>Your Motivation Level Today (1–10)</label>
+      <div class="range-wrap">
+        <input type="range" id="f-motivation" min="1" max="10" value="7" oninput="document.getElementById('mot-val').textContent=this.value"/>
+        <div class="range-val" id="mot-val">7</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGE UPLOADS -->
+  <div class="section-title">📸 Photo Proof</div>
+  <div class="form-card">
+    <div class="img-upload-grid">
+
+      <div class="img-slot">
+        <div class="img-drop" id="drop-start" onclick="triggerUpload('file-start')">
+          <div class="upload-icon">📷</div>
+          <div class="upload-text">Tap to Upload</div>
+          <img id="prev-start" src="" alt=""/>
+          <button class="remove-img" onclick="removeImg(event,'drop-start','prev-start','file-start')">✕</button>
+        </div>
+        <input type="file" id="file-start" accept="image/*" style="display:none" onchange="previewImg(this,'drop-start','prev-start')"/>
+        <div class="img-slot-label">⚖️ Start Weight</div>
+      </div>
+
+      <div class="img-slot">
+        <div class="img-drop" id="drop-current" onclick="triggerUpload('file-current')">
+          <div class="upload-icon">📷</div>
+          <div class="upload-text">Tap to Upload</div>
+          <img id="prev-current" src="" alt=""/>
+          <button class="remove-img" onclick="removeImg(event,'drop-current','prev-current','file-current')">✕</button>
+        </div>
+        <input type="file" id="file-current" accept="image/*" style="display:none" onchange="previewImg(this,'drop-current','prev-current')"/>
+        <div class="img-slot-label">📉 Current Weight</div>
+      </div>
+
+      <div class="img-slot">
+        <div class="img-drop" id="drop-diet" onclick="triggerUpload('file-diet')">
+          <div class="upload-icon">🥗</div>
+          <div class="upload-text">Tap to Upload</div>
+          <img id="prev-diet" src="" alt=""/>
+          <button class="remove-img" onclick="removeImg(event,'drop-diet','prev-diet','file-diet')">✕</button>
+        </div>
+        <input type="file" id="file-diet" accept="image/*" style="display:none" onchange="previewImg(this,'drop-diet','prev-diet')"/>
+        <div class="img-slot-label">🥗 Diet Followed</div>
+      </div>
+
+      <div class="img-slot">
+        <div class="img-drop" id="drop-workout" onclick="triggerUpload('file-workout')">
+          <div class="upload-icon">💪</div>
+          <div class="upload-text">Tap to Upload</div>
+          <img id="prev-workout" src="" alt=""/>
+          <button class="remove-img" onclick="removeImg(event,'drop-workout','prev-workout','file-workout')">✕</button>
+        </div>
+        <input type="file" id="file-workout" accept="image/*" style="display:none" onchange="previewImg(this,'drop-workout','prev-workout')"/>
+        <div class="img-slot-label">💪 Workout Daily</div>
+      </div>
+
+      <div class="img-slot">
+        <div class="img-drop" id="drop-steps" onclick="triggerUpload('file-steps')">
+          <div class="upload-icon">👣</div>
+          <div class="upload-text">Tap to Upload</div>
+          <img id="prev-steps" src="" alt=""/>
+          <button class="remove-img" onclick="removeImg(event,'drop-steps','prev-steps','file-steps')">✕</button>
+        </div>
+        <input type="file" id="file-steps" accept="image/*" style="display:none" onchange="previewImg(this,'drop-steps','prev-steps')"/>
+        <div class="img-slot-label">👣 Steps</div>
+      </div>
+
+      <div class="img-slot">
+        <div class="img-drop" id="drop-cheat" onclick="triggerUpload('file-cheat')">
+          <div class="upload-icon">🍕</div>
+          <div class="upload-text">Tap to Upload</div>
+          <img id="prev-cheat" src="" alt=""/>
+          <button class="remove-img" onclick="removeImg(event,'drop-cheat','prev-cheat','file-cheat')">✕</button>
+        </div>
+        <input type="file" id="file-cheat" accept="image/*" style="display:none" onchange="previewImg(this,'drop-cheat','prev-cheat')"/>
+        <div class="img-slot-label">🍕 Cheat Meals</div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submit-btn" onclick="submitForm()" disabled>🔥 Submit My Progress</button>
+  <div class="form-progress-bar"><div class="form-progress-fill" id="form-progress-fill"></div></div>
+  <div class="form-ready-hint" id="form-ready-hint">Fill all fields &amp; upload all 6 photos to unlock</div>
+</div>
+</div>
+
+<!-- PROGRESS WALL PAGE -->
+<!-- WALL PASSWORD OVERLAY -->
+<div id="wall-lock-overlay" style="display:none;position:fixed;inset:0;z-index:8888;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div style="background:#1c1c1c;border:1px solid #2e2e2e;border-radius:20px;padding:40px 32px;width:100%;max-width:400px;margin:20px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.7);">
+
+    <!-- STEP 1: Password entry -->
+    <div id="lock-step-1">
+      <div style="font-size:2.2rem;margin-bottom:12px;">🔐</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;color:#f0f0f0;margin-bottom:6px;">Progress Wall</h3>
+      <p style="color:#888;font-size:0.85rem;font-weight:600;margin-bottom:24px;">Enter password to view all submissions.<br/><span style="color:#f5c518;font-size:0.78rem;">Admins get delete access with the same password.</span></p>
+      <input id="wall-pass-input" type="password" placeholder="Enter password"
+        style="width:100%;padding:12px 16px;background:#0d0d0d;border:1.5px solid #2e2e2e;border-radius:10px;color:#f0f0f0;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:600;outline:none;margin-bottom:10px;"
+        onfocus="this.style.borderColor='#f5c518'" onblur="this.style.borderColor='#2e2e2e'"
+        onkeydown="if(event.key==='Enter')checkWallPass()"/>
+      <div id="wall-pass-err" style="display:none;color:#ff5252;font-size:0.8rem;font-weight:700;margin-bottom:10px;">❌ Wrong password. Try again.</div>
+      <button onclick="checkWallPass()" style="width:100%;padding:13px;background:linear-gradient(135deg,#f5c518,#ff4d1c);color:#0d0d0d;border:none;border-radius:10px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;cursor:pointer;margin-bottom:12px;">🔓 Unlock</button>
+      <button onclick="closeWallLock()" style="background:none;border:none;color:#555;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;">✕ Cancel</button>
+    </div>
+
+    <!-- STEP 2: Cloud connect (shown only to admin when GAS not configured) -->
+    <div id="lock-step-2" style="display:none;text-align:left;">
+      <div style="font-size:2rem;margin-bottom:8px;text-align:center;">☁️</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;color:#f5c518;margin-bottom:6px;text-align:center;">Connect Cloud Database</h3>
+      <p style="color:#aaa;font-size:0.82rem;font-weight:600;margin-bottom:16px;line-height:1.6;">Paste your Google Apps Script URL below so all members' submissions sync across every device.</p>
+      <input id="gas-url-input" type="text" placeholder="https://script.google.com/macros/s/…/exec"
+        style="width:100%;padding:11px 14px;background:#0d0d0d;border:1.5px solid #2e2e2e;border-radius:10px;color:#f0f0f0;font-family:'Nunito',sans-serif;font-size:0.78rem;font-weight:600;outline:none;margin-bottom:10px;box-sizing:border-box;"
+        onfocus="this.style.borderColor='#f5c518'" onblur="this.style.borderColor='#2e2e2e'"/>
+      <button onclick="saveGasUrl()" style="width:100%;padding:12px;background:linear-gradient(135deg,#f5c518,#ff4d1c);color:#0d0d0d;border:none;border-radius:10px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;cursor:pointer;margin-bottom:10px;">🔗 Connect & Open Wall</button>
+      <button onclick="skipGasSetup()" style="width:100%;background:none;border:1px solid #333;border-radius:10px;color:#666;font-size:0.82rem;font-weight:700;cursor:pointer;padding:10px;font-family:'Nunito',sans-serif;">Skip for now (local only)</button>
+    </div>
+
+  </div>
+</div>
+
+<div id="wall-page" class="page">
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <h2>👑 All Submissions</h2>
+        <span class="count-pill" id="wall-count">(0)</span>
+        <span id="admin-badge" style="display:none;background:linear-gradient(135deg,#ff5252,#ff4d1c);color:#fff;font-size:0.7rem;font-weight:800;padding:4px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;">🛡 Admin</span>
+      </div>
+      <button class="lock-btn" id="lock-btn" onclick="toggleLock()">🔒 Lock</button>
+    </div>
+    <div style="text-align:center;font-size:0.75rem;font-weight:700;padding:0 16px 10px;" id="db-status">⏳ Connecting…</div>
+
+    <!-- SETUP BANNER — hidden once URL is saved -->
+    <div id="setup-banner" style="display:none;background:#1c1c1c;border:1.5px solid #f5c518;border-radius:16px;padding:22px;max-width:520px;margin:0 auto 20px;font-size:0.85rem;line-height:1.7;color:#ccc;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#f5c518;letter-spacing:1px;margin-bottom:8px;">⚙️ One-Time Cloud Setup</div>
+      <p style="margin-bottom:12px;">To share submissions across all members' phones, connect a free Google Sheet in <strong style="color:#fff;">3 steps</strong>:</p>
+      <ol style="padding-left:18px;margin-bottom:16px;color:#bbb;">
+        <li style="margin-bottom:6px;">Go to <strong style="color:#f5c518;">script.google.com</strong> → click <strong>New Project</strong></li>
+        <li style="margin-bottom:6px;">Delete existing code, paste the script below, click 💾 Save, then <strong>Deploy → New deployment → Web app</strong> → set <em>"Who has access"</em> to <strong>Anyone</strong> → Deploy → Copy the URL</li>
+        <li>Paste the URL here:</li>
+      </ol>
+      <details style="margin-bottom:14px;">
+        <summary style="cursor:pointer;color:#f5c518;font-weight:700;margin-bottom:8px;">📋 Click to show the Apps Script code to copy</summary>
+        <pre id="gas-code" style="background:#0d0d0d;border:1px solid #333;border-radius:10px;padding:14px;font-size:0.7rem;color:#aaa;overflow-x:auto;white-space:pre-wrap;margin-top:8px;user-select:all;">const SHEET_NAME = 'Submissions';
+
+function doGet(e) {
+  const result = getSubmissions();
+  return ContentService
+    .createTextOutput(JSON.stringify(result))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  try {
+    // Accept both JSON body and URL-encoded form data
+    let submissions;
+    try {
+      const body = JSON.parse(e.postData.contents);
+      submissions = body.submissions;
+    } catch(ex) {
+      submissions = JSON.parse(e.parameter.submissions);
+    }
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+    sheet.getRange(1, 1).setValue(JSON.stringify(submissions || []));
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: false, error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function getSubmissions() {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+    const data = sheet.getRange(1, 1).getValue();
+    const submissions = data ? JSON.parse(data) : [];
+    return { ok: true, submissions };
+  } catch(err) {
+    return { ok: false, error: err.toString() };
+  }
+}</pre>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('gas-code').textContent).then(()=>this.textContent='✅ Copied!').catch(()=>{})" style="margin-top:8px;background:#f5c518;color:#0d0d0d;border:none;border-radius:8px;padding:7px 18px;font-weight:800;cursor:pointer;font-size:0.8rem;">📋 Copy Script</button>
+      </details>
+      <div style="display:flex;gap:8px;">
+        <input id="gas-url-input" type="text" placeholder="https://script.google.com/macros/s/…/exec"
+          style="flex:1;padding:10px 14px;background:#0d0d0d;border:1.5px solid #333;border-radius:10px;color:#f0f0f0;font-family:'Nunito',sans-serif;font-size:0.8rem;outline:none;"
+          onfocus="this.style.borderColor='#f5c518'" onblur="this.style.borderColor='#333'"/>
+        <button onclick="saveGasUrl()" style="background:linear-gradient(135deg,#f5c518,#ff4d1c);color:#0d0d0d;border:none;border-radius:10px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:0.82rem;white-space:nowrap;">🔗 Connect</button>
+      </div>
+    </div>
+    <div style="text-align:center;color:#aaa;font-size:0.82rem;font-weight:700;margin:0 0 16px;"> 📅 Day <span id="challenge-day5">10</span> of the Challenge</div>
+    <div id="empty-wall" class="empty-wall">
+      <div class="ei">🏋️</div>
+      <p>No progress submitted yet.<br/>Be the first to fill in your Day <span id="challenge-day4">10</span> progress!</p>
+    </div>
+    <div id="progress-grid" class="progress-grid"></div>
+  </div>
+</div>
+
+<div id="lb-page" class="page">
+  <div class="lb-wrap">
+
+    <!-- MEMBER COUNT BANNER -->
+    <div class="lb-banner">
+      <div class="lb-banner-inner">
+        <div class="lb-count-box">
+          <div class="lb-count-num" id="lb-member-count">0</div>
+          <div class="lb-count-lbl">💪 Members Joined</div>
+        </div>
+        <div class="lb-count-box">
+          <div class="lb-count-num" id="lb-avg-lost">0</div>
+          <div class="lb-count-lbl">📉 Avg kg Lost</div>
+        </div>
+        <div class="lb-count-box">
+          <div class="lb-count-num" id="lb-total-lost">0</div>
+          <div class="lb-count-lbl">🔥 Total kg Lost</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="lb-title">🏆 Leaderboard</h2>
+    <p class="lb-subtitle">Ranked by most weight lost · Day <span id="challenge-day6">10</span></p>
+
+    <div id="lb-empty" class="empty-wall" style="display:none;">
+      <div class="ei">🏅</div>
+      <p>No submissions yet. Be the first!</p>
+    </div>
+
+    <div id="lb-list"></div>
+  </div>
+</div>
+
+</div>
+<!-- HIDDEN CANVAS -->
+<canvas id="share-canvas" style="display:none;"></canvas>
+
+<!-- SHARE MODAL -->
+<div class="share-overlay" id="share-overlay" onclick="handleOverlayClick(event)">
+  <div class="share-modal">
+    <div class="confetti">🎉</div>
+    <h3>Progress Card Ready!</h3>
+    <p class="share-sub">Your progress image is generated.<br/>Download &amp; send it to anyone! 📲</p>
+
+    <span id="sp-name" style="display:none"></span>
+    <span id="sp-start" style="display:none"></span>
+    <span id="sp-cur" style="display:none"></span>
+    <span id="sp-lost" style="display:none"></span>
+    <span id="sp-energy" style="display:none"></span>
+    <span id="sp-mot" style="display:none"></span>
+
+    <!-- IMAGE PREVIEW -->
+    <div style="border-radius:14px;overflow:hidden;margin-bottom:18px;border:2px solid #333;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+      <img id="share-img-preview" src="" alt="Progress Card" style="width:100%;display:block;border-radius:12px;"/>
+    </div>
+
+    <!-- DOWNLOAD -->
+    <button onclick="downloadImage()" style="width:100%;background:linear-gradient(135deg,#f5c518,#ff4d1c);color:#0d0d0d;font-size:1rem;font-weight:900;border-radius:12px;padding:14px;margin-bottom:10px;border:none;cursor:pointer;font-family:Nunito,sans-serif;transition:all 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+      ⬇️ Save Image to Device
+    </button>
+
+    <!-- NATIVE SHARE (works on mobile — opens WhatsApp, Telegram, etc.) -->
+    <button onclick="nativeShare()" style="width:100%;background:#25d366;color:#fff;font-size:1rem;font-weight:900;border-radius:12px;padding:14px;margin-bottom:16px;border:none;cursor:pointer;font-family:Nunito,sans-serif;transition:all 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+      📤 Share Progress (WhatsApp / Telegram / Any App)
+    </button>
+
+    <button class="share-close-btn" onclick="closeShare()">✕ Close</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">🎉 Progress submitted! Check the Progress Wall!</div>
+
+<script>
+// ====== APP ======
+let submissions = [];
+let imgStore = {};
+
+// ====== ADMIN MODE ======
+let isAdmin = false;
+
+// ====== GOOGLE APPS SCRIPT BACKEND ======
+let GAS_URL = localStorage.getItem('pfc_gas_url') || '';
+let _saving = false;
+
+function showDbStatus(msg, color) {
+  const el = document.getElementById('db-status');
+  if (el) { el.textContent = msg; el.style.color = color || '#aaa'; }
+}
+
+function isConfigured() {
+  return GAS_URL && GAS_URL.startsWith('https://script.google.com');
+}
+
+async function loadSharedSubmissions() {
+  // Always show local cache instantly
+  const local = localStorage.getItem('pfc_submissions_v5');
+  if (local) { try { submissions = JSON.parse(local); } catch(e) { submissions = []; } }
+
+  if (!isConfigured()) {
+    showDbStatus('⚠️ Not connected — enter URL in setup', '#ff5252');
+    return;
+  }
+
+  try {
+    showDbStatus('⏳ Loading from cloud…', '#aaa');
+    // Apps Script with no-cors returns opaque response for GET too,
+    // so we use a script tag approach but call the URL directly as text via fetch
+    // with mode cors — GAS sets Access-Control-Allow-Origin: * on doGet responses
+    const res = await fetch(GAS_URL + '?action=get', {
+      method: 'GET',
+      redirect: 'follow'
+    });
+    const text = await res.text();
+    // GAS sometimes wraps in HTML on error
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error('Invalid response');
+    const data = JSON.parse(jsonMatch[0]);
+    if (data.ok) {
+      submissions = data.submissions || [];
+      localStorage.setItem('pfc_submissions_v5', JSON.stringify(submissions));
+      showDbStatus('🟢 Live — ' + submissions.length + ' submission(s)', '#39d98a');
+    } else throw new Error(data.error || 'Server error');
+  } catch(e) {
+    showDbStatus('⚠️ Using cached data — check connection', '#f5c518');
+    console.warn('Load failed:', e);
+  }
+}
+
+async function saveSharedSubmissions() {
+  if (_saving) return;
+  _saving = true;
+  const forStorage = submissions.map(s => Object.assign({}, s, { imgs: {} }));
+  localStorage.setItem('pfc_submissions_v5', JSON.stringify(forStorage));
+
+  if (!isConfigured()) { _saving = false; return; }
+
+  try {
+    showDbStatus('⏳ Saving…', '#f5c518');
+    // Send as URL-encoded form data — GAS handles this well and avoids preflight
+    const params = new URLSearchParams();
+    params.append('action', 'save');
+    params.append('submissions', JSON.stringify(forStorage));
+
+    const res = await fetch(GAS_URL, {
+      method: 'POST',
+      redirect: 'follow',
+      body: params
+    });
+    const text = await res.text();
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      const data = JSON.parse(jsonMatch[0]);
+      if (data.ok) {
+        showDbStatus('🟢 Saved — ' + submissions.length + ' submission(s)', '#39d98a');
+        _saving = false;
+        return;
+      }
+    }
+    throw new Error('Unexpected response');
+  } catch(e) {
+    showDbStatus('⚠️ Saved locally (cloud sync failed)', '#f5c518');
+    console.warn('Save failed:', e);
+  }
+  _saving = false;
+}
+
+async function deleteSubmission(id) {
+  if (!isAdmin) return;
+  if (!confirm('Delete this member\'s submission? This cannot be undone.')) return;
+  submissions = submissions.filter(s => s.id !== id);
+  delete imgStore[id];
+  await saveSharedSubmissions();
+  renderWall();
+  renderLeaderboard();
+}
+
+// Auto-refresh every 30s while wall is visible
+setInterval(async () => {
+  const wallPage = document.getElementById('wall-page');
+  if (wallPage && wallPage.classList.contains('active') && isConfigured()) {
+    try {
+      const res = await fetch(GAS_URL + '?action=get', { method: 'GET', redirect: 'follow' });
+      const text = await res.text();
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        const data = JSON.parse(jsonMatch[0]);
+        if (data.ok) {
+          const incoming = data.submissions || [];
+          if (JSON.stringify(incoming) !== JSON.stringify(submissions)) {
+            submissions = incoming;
+            localStorage.setItem('pfc_submissions_v5', JSON.stringify(submissions));
+            renderWall();
+            renderLeaderboard();
+            showDbStatus('🟢 Live — ' + submissions.length + ' submission(s)', '#39d98a');
+          }
+        }
+      }
+    } catch(e) {}
+  }
+}, 30000);
+
+// ====== AUTO DAY COUNTER ======
+const CHALLENGE_START = new Date('2026-03-01');
+function getChallengeDay() {
+  const now = new Date(); const start = new Date(CHALLENGE_START);
+  now.setHours(0,0,0,0); start.setHours(0,0,0,0);
+  const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24)) + 1;
+  return diff > 0 ? diff : 1;
+}
+const TODAY_DAY = getChallengeDay();
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load shared submissions from shared storage
+  await loadSharedSubmissions();
+
+  // Update day spans
+  ['challenge-day','challenge-day2','challenge-day3','challenge-day4','challenge-day5','challenge-day6'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = TODAY_DAY;
+  });
+  // Wire inputs to readiness check
+  ['f-name','f-age','f-start-weight','f-current-weight','f-duration'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', checkFormReady);
+  });
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.addEventListener('change', checkFormReady));
+  checkFormReady();
+});
+
+function toggleOtherWorkout(radio) {
+  const isOther = radio.value === 'Other';
+  const field = document.getElementById('other-workout-field');
+  field.style.display = isOther ? 'block' : 'none';
+  if (!isOther) document.getElementById('f-other-workout').value = '';
+  checkFormReady();
+}
+
+function toggleCheatDetails(radio) {
+  const isYes = radio.value === 'Yes';
+  document.getElementById('cheat-count-field').style.display = isYes ? 'block' : 'none';
+  document.getElementById('energy-field').style.display = isYes ? 'block' : 'none';
+  if (!isYes) {
+    document.getElementById('f-cheat-count').value = '';
+    document.querySelectorAll('input[name="energy"]').forEach(r => r.checked = false);
+  }
+  checkFormReady();
+}
+
+
+// ====== WALL PASSWORD ======
+const WALL_PASSWORD = 'platinum248';
+let wallUnlocked = false;
+
+function checkWallPass() {
+  const val = document.getElementById('wall-pass-input').value;
+  if (val === WALL_PASSWORD) {
+    wallUnlocked = true;
+    isAdmin = true;
+    document.getElementById('wall-pass-input').value = '';
+    document.getElementById('wall-pass-err').style.display = 'none';
+    const adminBadge = document.getElementById('admin-badge');
+    if (adminBadge) adminBadge.style.display = 'inline-flex';
+
+    if (!isConfigured()) {
+      // Show step 2 — cloud connect screen
+      document.getElementById('lock-step-1').style.display = 'none';
+      document.getElementById('lock-step-2').style.display = 'block';
+    } else {
+      // Already configured — go straight to wall
+      document.getElementById('wall-lock-overlay').style.display = 'none';
+      loadSharedSubmissions().then(() => renderWall());
+    }
+  } else {
+    document.getElementById('wall-pass-err').style.display = 'block';
+    document.getElementById('wall-pass-input').value = '';
+  }
+}
+
+function skipGasSetup() {
+  document.getElementById('wall-lock-overlay').style.display = 'none';
+  document.getElementById('lock-step-1').style.display = 'block';
+  document.getElementById('lock-step-2').style.display = 'none';
+  loadSharedSubmissions().then(() => renderWall());
+}
+
+function saveGasUrl() {
+  const val = document.getElementById('gas-url-input').value.trim();
+  if (!val.startsWith('https://script.google.com')) {
+    alert('❌ That doesn\'t look like a valid Apps Script URL.\nIt must start with https://script.google.com');
+    return;
+  }
+  GAS_URL = val;
+  localStorage.setItem('pfc_gas_url', GAS_URL);
+  // Close overlay and open wall
+  document.getElementById('wall-lock-overlay').style.display = 'none';
+  document.getElementById('lock-step-1').style.display = 'block';
+  document.getElementById('lock-step-2').style.display = 'none';
+  const banner = document.getElementById('setup-banner');
+  if (banner) banner.style.display = 'none';
+  loadSharedSubmissions().then(() => renderWall());
+}
+
+function closeWallLock() {
+  document.getElementById('wall-lock-overlay').style.display = 'none';
+  // Go back to form tab
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('form-page').classList.add('active');
+  document.querySelector('.tab').classList.add('active');
+}
+
+// ====== FORM READINESS CHECK ======
+const REQUIRED_FIELDS = ['f-name','f-age','f-start-weight','f-current-weight','f-duration'];
+const REQUIRED_RADIOS = ['diet','discipline','workout','wtype','cheat_yn'];
+const REQUIRED_IMGS   = ['prev-start','prev-current','prev-diet','prev-workout','prev-steps','prev-cheat'];
+const TOTAL_CHECKS = REQUIRED_FIELDS.length + REQUIRED_RADIOS.length + REQUIRED_IMGS.length;
+
+function checkFormReady() {
+  let filled = 0;
+  REQUIRED_FIELDS.forEach(id => { if (document.getElementById(id)?.value.trim()) filled++; });
+  REQUIRED_RADIOS.forEach(name => { if (document.querySelector('input[name="' + name + '"]:checked')) filled++; });
+  REQUIRED_IMGS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.src && el.src.startsWith('data:')) filled++;
+  });
+  const pct = Math.round((filled / TOTAL_CHECKS) * 100);
+  document.getElementById('form-progress-fill').style.width = pct + '%';
+  const btn  = document.getElementById('submit-btn');
+  const hint = document.getElementById('form-ready-hint');
+  if (filled === TOTAL_CHECKS) {
+    btn.disabled = false;
+    hint.textContent = '\u2705 All done! You can now submit.';
+    hint.classList.add('ready');
+  } else {
+    btn.disabled = true;
+    hint.textContent = filled + ' / ' + TOTAL_CHECKS + ' completed — fill all fields & upload all 6 photos';
+    hint.classList.remove('ready');
+  }
+}
+
+// Auto-calc weight lost
+['f-start-weight','f-current-weight'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    const s = parseFloat(document.getElementById('f-start-weight').value);
+    const c = parseFloat(document.getElementById('f-current-weight').value);
+    if (!isNaN(s) && !isNaN(c)) {
+      const lost = (s - c).toFixed(1);
+      document.getElementById('f-weight-lost').value = lost > 0 ? lost + ' kg' : '0 kg';
+    }
+  });
+});
+
+function triggerUpload(fileInputId) {
+  document.getElementById(fileInputId).click();
+}
+
+function previewImg(input, dropId, imgId) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = document.getElementById(imgId);
+    const drop = document.getElementById(dropId);
+    img.src = ev.target.result;
+    drop.classList.add('has-img');
+    checkFormReady();
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function removeImg(e, dropId, imgId, fileInputId) {
+  e.stopPropagation();
+  e.preventDefault();
+  document.getElementById(imgId).src = '';
+  document.getElementById(dropId).classList.remove('has-img');
+  const inp = document.getElementById(fileInputId);
+  if (inp) inp.value = '';
+  checkFormReady();
+}
+
+function getRadio(name) {
+  return document.querySelector(`input[name="${name}"]:checked`)?.value || '';
+}
+
+function getImgData(imgId) {
+  const el = document.getElementById(imgId);
+  if (!el || !el.src) return null;
+  const src = el.src;
+  // Valid if it's a data URL (base64)
+  return src.startsWith('data:') ? src : null;
+}
+
+async function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const age = document.getElementById('f-age').value.trim();
+  const startW = document.getElementById('f-start-weight').value.trim();
+  const curW = document.getElementById('f-current-weight').value.trim();
+  const diet = getRadio('diet');
+  const discipline = getRadio('discipline');
+  const workout = getRadio('workout');
+  const wtypeRaw = getRadio('wtype');
+  const otherWorkout = document.getElementById('f-other-workout').value.trim();
+  const wtype = wtypeRaw === 'Other' ? (otherWorkout || 'Other') : wtypeRaw;
+  const duration = document.getElementById('f-duration').value.trim();
+  const cheatYN = getRadio('cheat_yn');
+  const cheatCount = document.getElementById('f-cheat-count').value.trim();
+  const energy = cheatYN === 'Yes' ? getRadio('energy') : 'N/A';
+
+  if (!name || !age || !startW || !curW || !diet || !discipline || !workout || !wtypeRaw || !duration || !cheatYN) {
+    alert('⚠️ Please fill all required fields!');
+    return;
+  }
+  if (wtypeRaw === 'Other' && !otherWorkout) {
+    alert('⚠️ Please specify your workout type.');
+    return;
+  }
+  if (cheatYN === 'Yes' && !cheatCount) {
+    alert('⚠️ Please enter how many cheat meals you had.');
+    return;
+  }
+  if (cheatYN === 'Yes' && !getRadio('energy')) {
+    alert('⚠️ Please select your Energy Level.');
+    return;
+  }
+
+  const lost = parseFloat(startW) - parseFloat(curW);
+  const entry = {
+    id: Date.now(),
+    name, age,
+    startW: parseFloat(startW),
+    curW: parseFloat(curW),
+    lost: lost.toFixed(1),
+    diet, discipline, workout, wtype, duration,
+    steps: document.getElementById('f-steps').value || '—',
+    water: document.getElementById('f-water').value || '—',
+    cheat: cheatYN === 'Yes' ? 'Yes – ' + cheatCount + ' meal(s)' : 'No',
+    energy,
+    challenge: document.getElementById('f-challenge').value || '—',
+    goal: document.getElementById('f-goal').value || '—',
+    motivation: document.getElementById('f-motivation').value,
+    imgs: {
+      start: getImgData('prev-start'),
+      current: getImgData('prev-current'),
+      diet: getImgData('prev-diet'),
+      workout: getImgData('prev-workout'),
+      steps: getImgData('prev-steps'),
+      cheat: getImgData('prev-cheat'),
+    },
+    time: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
+  };
+
+  // Save images in memory only (too large for localStorage)
+  imgStore[entry.id] = entry.imgs;
+  // Add to submissions array
+  submissions.push(entry);
+  // Save to shared storage (without images - too large)
+  await saveSharedSubmissions();
+  if (document.getElementById('lb-member-count')) renderLeaderboard();
+
+  // Reset form
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-age').value = '';
+  document.getElementById('f-start-weight').value = '';
+  document.getElementById('f-current-weight').value = '';
+  document.getElementById('f-weight-lost').value = '';
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('f-other-workout').value = '';
+  document.getElementById('other-workout-field').style.display = 'none';
+  document.getElementById('f-duration').value = '';
+  document.getElementById('f-steps').value = '';
+  document.getElementById('f-water').value = '';
+  document.querySelectorAll('input[name="cheat_yn"]').forEach(r => r.checked = false);
+  document.getElementById('f-cheat-count').value = '';
+  document.getElementById('cheat-count-field').style.display = 'none';
+  document.getElementById('energy-field').style.display = 'none';
+  document.getElementById('f-challenge').value = '';
+  document.getElementById('f-goal').value = '';
+  document.getElementById('f-motivation').value = 7;
+  document.getElementById('mot-val').textContent = '7';
+  [['drop-start','prev-start','file-start'],['drop-current','prev-current','file-current'],
+   ['drop-diet','prev-diet','file-diet'],['drop-workout','prev-workout','file-workout'],
+   ['drop-steps','prev-steps','file-steps'],['drop-cheat','prev-cheat','file-cheat']].forEach(([d,p,f]) => {
+    document.getElementById(d).classList.remove('has-img');
+    document.getElementById(p).src = '';
+    const inp = document.getElementById(f); if (inp) inp.value = '';
+  });
+
+  showShare(entry);
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'wall-page') {
+    if (!wallUnlocked) {
+      document.getElementById('wall-lock-overlay').style.display = 'flex';
+    } else {
+      // Refresh from cloud each time wall tab is clicked
+      loadSharedSubmissions().then(() => renderWall());
+    }
+  }
+  if (id === 'lb-page') renderLeaderboard();
+}
+
+function toggleLbExpand(idx) {
+  const panel = document.getElementById('lb-detail-' + idx);
+  const arrow = document.getElementById('lb-arrow-' + idx);
+  const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+  // Close all
+  document.querySelectorAll('.lb-detail-panel').forEach(p => { p.style.maxHeight = '0px'; p.style.opacity = '0'; });
+  document.querySelectorAll('.lb-arrow').forEach(a => a.textContent = '▾');
+  if (!isOpen) {
+    panel.style.maxHeight = '600px';
+    panel.style.opacity = '1';
+    arrow.textContent = '▴';
+  }
+}
+
+function renderLeaderboard() {
+  const list = document.getElementById('lb-list');
+  const empty = document.getElementById('lb-empty');
+  const count = submissions.length;
+  document.getElementById('lb-member-count').textContent = count;
+  if (count === 0) {
+    document.getElementById('lb-avg-lost').textContent = '0';
+    document.getElementById('lb-total-lost').textContent = '0';
+    empty.style.display = 'block';
+    list.innerHTML = '';
+    return;
+  }
+  empty.style.display = 'none';
+  const sorted = [...submissions].sort((a, b) => parseFloat(b.lost) - parseFloat(a.lost));
+  const maxLost = parseFloat(sorted[0].lost) || 1;
+  const totalLost = sorted.reduce((acc, x) => acc + parseFloat(x.lost), 0);
+  const avgLost = totalLost / count;
+  document.getElementById('lb-total-lost').textContent = totalLost.toFixed(1);
+  document.getElementById('lb-avg-lost').textContent = avgLost.toFixed(1);
+
+  const medals = ['🥇','🥈','🥉'];
+  const rankClass = ['top1','top2','top3'];
+  const numClass = ['r1','r2','r3'];
+  const rankBg = ['#fffbe6','#f5f5f5','#fff4ee'];
+  const rankBorder = ['#f5c518','#bbb','#cd7f32'];
+
+  list.innerHTML = sorted.map((s, i) => {
+    const lost = parseFloat(s.lost);
+    const pct = Math.round((lost / maxLost) * 100);
+    const rank = i + 1;
+    const isTop = i < 3;
+    const rc = rankClass[i] || '';
+    const nc = numClass[i] || 'rn';
+    const isFullDiet = s.diet === 'Yes' && s.discipline === 'Excellent';
+    const aboveAvg = lost > avgLost;
+    const motPct = Math.round((parseInt(s.motivation) / 10) * 100);
+    const initials = s.name.trim().split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    const dietColor = s.diet === 'Yes' ? '#27ae60' : s.diet === 'No' ? '#e74c3c' : '#e67e22';
+    const energyColor = s.energy === 'High' ? '#27ae60' : s.energy === 'Moderate' ? '#e67e22' : s.energy === 'Low' ? '#e74c3c' : '#aaa';
+
+    return `<div class="lb-card" style="animation-delay:${i*0.06}s">
+
+      <!-- CLICKABLE ROW -->
+      <div class="lb-row ${rc}" onclick="toggleLbExpand(${i})" style="cursor:pointer;border-radius:16px;margin-bottom:0;">
+        <div class="lb-rank ${nc}">${isTop ? medals[i] : '#'+rank}</div>
+        <div class="lb-info">
+          <div class="lb-name">${s.name}
+            ${rank===1 ? '<span class="lb-badge badge-top">⭐ Leader</span>' : ''}
+            ${isFullDiet ? '<span class="lb-badge badge-most">🥗 Diet Star</span>' : ''}
+            ${aboveAvg ? '<span class="lb-badge badge-avg">📈 Above Avg</span>' : ''}
+          </div>
+          <div class="lb-meta">Age ${s.age} &nbsp;·&nbsp; ${s.wtype} &nbsp;·&nbsp; ⚡ ${s.energy}</div>
+          <div class="lb-progress-wrap">
+            <div class="lb-progress-bg">
+              <div class="lb-progress-fill" style="width:${pct}%"></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+          <div class="lb-lost">
+            <div class="lb-lost-num">${lost.toFixed(1)}</div>
+            <div class="lb-lost-unit">kg lost</div>
+          </div>
+          <div class="lb-arrow" id="lb-arrow-${i}" style="font-size:0.75rem;color:#bbb;font-weight:700;">▾</div>
+        </div>
+      </div>
+
+      <!-- EXPANDABLE DETAIL PANEL -->
+      <div class="lb-detail-panel" id="lb-detail-${i}">
+        <div class="lb-detail-inner">
+
+          <!-- AVATAR + WEIGHT SUMMARY -->
+          <div class="lb-det-header">
+            <div class="lb-det-avatar">${initials}</div>
+            <div style="flex:1">
+              <div style="font-weight:900;font-size:1rem;color:#1a1a1a;">${s.name}</div>
+              <div style="font-size:0.72rem;color:#999;font-weight:600;">Rank #${rank} &nbsp;·&nbsp; Joined: ${s.time}</div>
+            </div>
+          </div>
+
+          <!-- WEIGHT BOXES -->
+          <div class="lb-det-weight-row">
+            <div class="lb-det-wbox">
+              <div class="lb-det-wval">${s.startW}<span class="lb-det-wunit">kg</span></div>
+              <div class="lb-det-wlbl">Start</div>
+            </div>
+            <div style="color:#ccc;font-size:1.2rem;align-self:center;">→</div>
+            <div class="lb-det-wbox">
+              <div class="lb-det-wval" style="color:#27ae60">${s.curW}<span class="lb-det-wunit">kg</span></div>
+              <div class="lb-det-wlbl">Current</div>
+            </div>
+            <div style="color:#ccc;font-size:1.2rem;align-self:center;">→</div>
+            <div class="lb-det-wbox">
+              <div class="lb-det-wval" style="color:#f5a623">${lost.toFixed(1)}<span class="lb-det-wunit">kg</span></div>
+              <div class="lb-det-wlbl">Lost</div>
+            </div>
+          </div>
+
+          <!-- STAT CHIPS -->
+          <div class="lb-det-chips">
+            <div class="lb-chip"><span class="lb-chip-lbl">🥗 Diet</span><span class="lb-chip-val" style="color:${dietColor}">${s.diet}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">⭐ Discipline</span><span class="lb-chip-val">${s.discipline}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">💪 Workout</span><span class="lb-chip-val">${s.wtype}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">⏱ Duration</span><span class="lb-chip-val">${s.duration}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">👣 Steps</span><span class="lb-chip-val">${s.steps}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">💧 Water</span><span class="lb-chip-val">${s.water}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">⚡ Energy</span><span class="lb-chip-val" style="color:${energyColor}">${s.energy}</span></div>
+            <div class="lb-chip"><span class="lb-chip-lbl">🍕 Cheat</span><span class="lb-chip-val">${s.cheat}</span></div>
+          </div>
+
+          <!-- VS AVERAGE COMPARISON -->
+          <div class="lb-det-vs">
+            <div class="lb-det-vs-title">📊 vs Group Average</div>
+            <div class="lb-det-vs-row">
+              <span class="lb-det-vs-lbl">This member</span>
+              <span class="lb-det-vs-bar-wrap">
+                <span class="lb-det-vs-bar" style="width:${pct}%;background:${isTop ? 'linear-gradient(90deg,#f5c518,#ff6b35)' : '#aaa'}"></span>
+              </span>
+              <span class="lb-det-vs-num" style="color:#f5a623">${lost.toFixed(1)} kg</span>
+            </div>
+            <div class="lb-det-vs-row">
+              <span class="lb-det-vs-lbl">Group avg</span>
+              <span class="lb-det-vs-bar-wrap">
+                <span class="lb-det-vs-bar" style="width:${Math.round((avgLost/maxLost)*100)}%;background:#ddd"></span>
+              </span>
+              <span class="lb-det-vs-num" style="color:#999">${avgLost.toFixed(1)} kg</span>
+            </div>
+          </div>
+
+          <!-- MOTIVATION BAR -->
+          <div class="lb-det-mot">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+              <span style="font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:#bbb;">🔥 Motivation</span>
+              <span style="font-size:0.82rem;font-weight:900;color:#f5c518;">${s.motivation}/10</span>
+            </div>
+            <div style="height:6px;background:#f0ebe0;border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:${motPct}%;background:linear-gradient(90deg,#f5c518,#ff6b35);border-radius:3px;"></div>
+            </div>
+          </div>
+
+          ${(s.goal && s.goal !== '—') ? `<div class="lb-det-goal">🎯 <strong>Goal:</strong> ${s.goal}</div>` : ''}
+        </div>
+      </div>
+
+    </div>`;
+  }).join('');
+}
+
+const imgLabels = {
+  start: 'Start Weight', current: 'Current Weight', diet: 'Diet', workout: 'Workout', steps: 'Steps', cheat: 'Cheat Meals'
+};
+
+let wallLocked = false;
+function toggleLock() {
+  wallLocked = !wallLocked;
+  document.getElementById('lock-btn').textContent = wallLocked ? '🔓 Unlock' : '🔒 Lock';
+  renderWall();
+}
+
+function renderWall() {
+  const grid = document.getElementById('progress-grid');
+  const empty = document.getElementById('empty-wall');
+  const countEl = document.getElementById('wall-count');
+  countEl.textContent = '(' + submissions.length + ')';
+
+  if (submissions.length === 0) {
+    empty.style.display = 'block';
+    grid.innerHTML = '';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = [...submissions].reverse().map((s, i) => {
+    const lostNum = parseFloat(s.lost);
+    const lostColor = lostNum > 0 ? '#f5a623' : lostNum < 0 ? '#e74c3c' : '#aaa';
+    const motPct = Math.round((parseInt(s.motivation) / 10) * 100);
+    const initials = s.name.trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+
+    // Diet colour class
+    const dietClass = s.diet === 'Yes' ? 'diet-yes' : s.diet === 'No' ? 'diet-no' : 'diet-part';
+    // Energy colour class
+    const energyClass = s.energy === 'High' ? 'energy-high' : s.energy === 'Moderate' ? 'energy-mod' : s.energy === 'Low' ? 'energy-low' : '';
+
+    // Photos
+    const imgs = imgStore[s.id] || s.imgs || {};
+    const photoItems = Object.entries(imgs)
+      .filter(([k,v]) => v && v.startsWith('data:'))
+      .map(([k,v]) => `<div class="nc-photo-item">
+          <img src="${v}" alt="${imgLabels[k]}" onclick="openLightboxData(this)"/>
+          <div class="nc-photo-lbl">${imgLabels[k]}</div>
+        </div>`).join('');
+    const photoSection = photoItems
+      ? `<div class="nc-photos">
+           <div class="nc-photos-title">📸 Photo Proof</div>
+           <div class="nc-photo-grid">${photoItems}</div>
+         </div>` : '';
+
+    // Reflections
+    const hasChallenge = s.challenge && s.challenge !== '—';
+    const hasGoal = s.goal && s.goal !== '—';
+    const reflectionSection = (hasChallenge || hasGoal) ? `
+      <div class="nc-reflections">
+        ${hasChallenge ? `<div class="nc-bubble nc-bubble-challenge">
+          <div class="nc-bubble-lbl">💬 Biggest Challenge</div>
+          ${s.challenge}
+        </div>` : ''}
+        ${hasGoal ? `<div class="nc-bubble nc-bubble-goal">
+          <div class="nc-bubble-lbl">🎯 Next Goal</div>
+          ${s.goal}
+        </div>` : ''}
+      </div>` : '';
+
+    return `
+    <div class="new-card" style="animation-delay:${i*0.06}s">
+
+      <!-- HEADER -->
+      <div class="nc-header">
+        <div class="nc-avatar">${initials}</div>
+        <div class="nc-header-info">
+          <div class="nc-name">${s.name}</div>
+          <div class="nc-meta">Age ${s.age} &nbsp;·&nbsp; ${s.time}</div>
+        </div>
+        <div class="nc-lost-badge">
+          <div class="nc-lost-val" style="color:${lostColor}">${lostNum > 0 ? '-' : ''}${Math.abs(lostNum)}</div>
+          <div class="nc-lost-lbl">kg lost</div>
+        </div>
+        ${isAdmin ? `<button onclick="deleteSubmission(${s.id})" title="Delete this member" style="margin-left:8px;background:rgba(255,82,82,0.15);border:1.5px solid rgba(255,82,82,0.4);color:#ff5252;border-radius:50%;width:32px;height:32px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,82,82,0.3)'" onmouseout="this.style.background='rgba(255,82,82,0.15)'">🗑</button>` : ''}
+      </div>
+
+      <!-- WEIGHT ROW -->
+      <div class="nc-weight-row">
+        <div class="nc-w-box">
+          <div class="nc-w-val">${s.startW} <span style="font-size:0.75rem;font-family:'Nunito',sans-serif;font-weight:700;">kg</span></div>
+          <div class="nc-w-lbl">Start Weight</div>
+        </div>
+        <div class="nc-w-arrow">→</div>
+        <div class="nc-w-box">
+          <div class="nc-w-val" style="color:#27ae60">${s.curW} <span style="font-size:0.75rem;font-family:'Nunito',sans-serif;font-weight:700;">kg</span></div>
+          <div class="nc-w-lbl">Current Weight</div>
+        </div>
+        <div class="nc-w-arrow">→</div>
+        <div class="nc-w-box">
+          <div class="nc-w-val" style="color:${lostColor}">${Math.abs(lostNum)} <span style="font-size:0.75rem;font-family:'Nunito',sans-serif;font-weight:700;">kg</span></div>
+          <div class="nc-w-lbl">Lost</div>
+        </div>
+      </div>
+
+      <!-- STATS GRID -->
+      <div class="nc-stats">
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">🥗 Diet Followed</div>
+          <div class="nc-stat-val ${dietClass}">${s.diet}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">⭐ Diet Discipline</div>
+          <div class="nc-stat-val">${s.discipline}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">💪 Workout Type</div>
+          <div class="nc-stat-val">${s.wtype}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">⏱ Duration</div>
+          <div class="nc-stat-val">${s.duration}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">👣 Daily Steps</div>
+          <div class="nc-stat-val">${s.steps}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">💧 Water Intake</div>
+          <div class="nc-stat-val">${s.water}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">⚡ Energy Level</div>
+          <div class="nc-stat-val ${energyClass}">${s.energy}</div>
+        </div>
+        <div class="nc-stat-item">
+          <div class="nc-stat-lbl">🍕 Cheat Meals</div>
+          <div class="nc-stat-val">${s.cheat}</div>
+        </div>
+      </div>
+
+      <!-- MOTIVATION BAR -->
+      <div class="nc-mot-bar-wrap">
+        <div class="nc-mot-header">
+          <span class="nc-mot-lbl">🔥 Motivation Level</span>
+          <span class="nc-mot-num">${s.motivation} / 10</span>
+        </div>
+        <div class="nc-mot-bg">
+          <div class="nc-mot-fill" style="width:${motPct}%"></div>
+        </div>
+      </div>
+
+      ${reflectionSection}
+      ${photoSection}
+
+      <!-- SHARE BTN -->
+      ${!wallLocked ? `<button class="nc-share-btn" onclick='showShareById(${s.id})'>📱 Share Progress</button>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function openLightboxData(imgEl) {
+  document.getElementById('lightbox-img').src = imgEl.src;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+// ====== SHARE ======
+let _shareEntry = null;
+
+function showShare(entry) {
+  // Merge in-memory images back into entry
+  const fullEntry = Object.assign({}, entry, { imgs: imgStore[entry.id] || entry.imgs || {} });
+  _shareEntry = fullEntry;
+  document.getElementById('sp-name').textContent = fullEntry.name;
+  document.getElementById('sp-start').textContent = fullEntry.startW;
+  document.getElementById('sp-cur').textContent = fullEntry.curW;
+  document.getElementById('sp-lost').textContent = Math.abs(parseFloat(fullEntry.lost));
+  document.getElementById('sp-energy').textContent = fullEntry.energy;
+  document.getElementById('sp-mot').textContent = fullEntry.motivation;
+  generateCard(fullEntry);
+  document.getElementById('share-overlay').classList.add('open');
+}
+
+function closeShare() {
+  document.getElementById('share-overlay').classList.remove('open');
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function generateCard(e) {
+  const canvas = document.getElementById('share-canvas');
+  const W = 800, H = 900;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const lost = Math.abs(parseFloat(e.lost));
+
+  // ── Background gradient ──
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0d0d0d');
+  bg.addColorStop(1, '#1a1a1a');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // ── Gold top bar ──
+  const bar = ctx.createLinearGradient(0, 0, W, 0);
+  bar.addColorStop(0, '#f5c518');
+  bar.addColorStop(1, '#ff4d1c');
+  ctx.fillStyle = bar;
+  ctx.fillRect(0, 0, W, 6);
+
+  // ── Club name ──
+  ctx.fillStyle = '#f5c518';
+  ctx.font = 'bold 22px sans-serif';
+  ctx.fillText('🏆 PLATINUM FITNESS CLUB', 50, 60);
+
+  // ── Day badge ──
+  roundRect(ctx, 50, 78, 180, 34, 17);
+  ctx.fillStyle = 'rgba(57,217,138,0.15)';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(57,217,138,0.4)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+  ctx.fillStyle = '#39d98a';
+  ctx.font = 'bold 15px sans-serif';
+  ctx.fillText('🎉 Day ' + TODAY_DAY + ' Progress', 62, 101);
+
+  // ── Name ──
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 52px sans-serif';
+  ctx.fillText(e.name, 50, 185);
+
+  // ── Age ──
+  ctx.fillStyle = '#888';
+  ctx.font = '22px sans-serif';
+  ctx.fillText('Age ' + e.age + '  ·  ' + e.time, 50, 220);
+
+  // ── Divider ──
+  ctx.strokeStyle = '#2e2e2e';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(50, 245); ctx.lineTo(W - 50, 245); ctx.stroke();
+
+  // ── Weight lost BIG ──
+  const lostGrad = ctx.createLinearGradient(0, 260, 0, 340);
+  lostGrad.addColorStop(0, '#f5a623');
+  lostGrad.addColorStop(1, '#ff4d1c');
+  ctx.fillStyle = lostGrad;
+  ctx.font = 'bold 110px sans-serif';
+  ctx.fillText(lost + ' kg', 50, 355);
+  ctx.fillStyle = '#888';
+  ctx.font = 'bold 26px sans-serif';
+  ctx.fillText('LOST SO FAR 🔥', 50, 390);
+
+  // ── Weight boxes ──
+  // Start
+  roundRect(ctx, 50, 420, 210, 90, 14);
+  ctx.fillStyle = '#1c1c1c';
+  ctx.fill();
+  ctx.strokeStyle = '#2e2e2e'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = '#888'; ctx.font = '16px sans-serif';
+  ctx.fillText('START WEIGHT', 65, 448);
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 36px sans-serif';
+  ctx.fillText(e.startW + ' kg', 65, 493);
+
+  // Arrow
+  ctx.fillStyle = '#555'; ctx.font = 'bold 34px sans-serif';
+  ctx.fillText('→', 278, 477);
+
+  // Current
+  roundRect(ctx, 320, 420, 210, 90, 14);
+  ctx.fillStyle = '#1c1c1c'; ctx.fill();
+  ctx.strokeStyle = '#2e2e2e'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = '#888'; ctx.font = '16px sans-serif';
+  ctx.fillText('CURRENT WEIGHT', 335, 448);
+  ctx.fillStyle = '#39d98a'; ctx.font = 'bold 36px sans-serif';
+  ctx.fillText(e.curW + ' kg', 335, 493);
+
+  // ── Stats grid ──
+  ctx.strokeStyle = '#2e2e2e'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(50, 535); ctx.lineTo(W - 50, 535); ctx.stroke();
+
+  const stats = [
+    ['💪 Workout', e.wtype + ' · ' + e.duration],
+    ['🥗 Diet', e.diet + ' (' + e.discipline + ')'],
+    ['👣 Steps', e.steps],
+    ['💧 Water', e.water],
+    ['⚡ Energy', e.energy],
+    ['🎯 Motivation', e.motivation + ' / 10'],
+    ['🍕 Cheat Meals', e.cheat],
+    ['💊 Workout Daily', e.workout],
+  ];
+
+  const colW = (W - 100) / 2;
+  stats.forEach((st, idx) => {
+    const col = idx % 2;
+    const row = Math.floor(idx / 2);
+    const x = 50 + col * colW;
+    const y = 575 + row * 52;
+    ctx.fillStyle = '#888'; ctx.font = '17px sans-serif';
+    ctx.fillText(st[0], x, y);
+    ctx.fillStyle = '#f0f0f0'; ctx.font = 'bold 20px sans-serif';
+    ctx.fillText(st[1], x, y + 24);
+  });
+
+  // ── Challenge & Goal ──
+  ctx.strokeStyle = '#2e2e2e';
+  ctx.beginPath(); ctx.moveTo(50, 795); ctx.lineTo(W - 50, 795); ctx.stroke();
+
+  if (e.challenge && e.challenge !== '—') {
+    ctx.fillStyle = '#aaa'; ctx.font = 'italic 18px sans-serif';
+    ctx.fillText('💬 "' + e.challenge.slice(0, 60) + (e.challenge.length > 60 ? '…' : '') + '"', 50, 830);
+  }
+  if (e.goal && e.goal !== '—') {
+    ctx.fillStyle = '#f5c518'; ctx.font = 'italic 18px sans-serif';
+    ctx.fillText('🎯 "' + e.goal.slice(0, 60) + (e.goal.length > 60 ? '…' : '') + '"', 50, 860);
+  }
+
+  // ── Hashtags ──
+  ctx.fillStyle = '#444'; ctx.font = '15px sans-serif';
+  ctx.fillText('#PlatinumFitnessClub  #5KGChallenge  #Day' + TODAY_DAY + '  #WeightLoss', 50, H - 20);
+
+  // Update preview img
+  document.getElementById('share-img-preview').src = canvas.toDataURL('image/png');
+}
+
+function downloadImage() {
+  const canvas = document.getElementById('share-canvas');
+  const a = document.createElement('a');
+  a.download = 'progress-' + (_shareEntry ? _shareEntry.name.replace(/\s+/g,'_') : 'card') + '.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+
+async function nativeShare() {
+  const canvas = document.getElementById('share-canvas');
+  const e = _shareEntry;
+  const lost = Math.abs(parseFloat(e.lost));
+  canvas.toBlob(async (blob) => {
+    const file = new File([blob], 'progress-' + e.name.replace(/\s+/g,'_') + '.png', { type: 'image/png' });
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          title: '🏆 ' + e.name + ' – Day ' + TODAY_DAY + ' Progress',
+          text: e.name + ' lost ' + lost + 'kg! 🔥 #PlatinumFitnessClub #5KGChallenge',
+          files: [file]
+        });
+      } else {
+        downloadImage();
+        alert('📸 Image saved to your device! Send it via WhatsApp, Telegram, or any app you like.');
+      }
+    } catch(err) {
+      if (err.name !== 'AbortError') {
+        downloadImage();
+      }
+    }
+  }, 'image/png');
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('share-overlay')) closeShare();
+}
+
+function showShareById(id) {
+  const entry = submissions.find(x => x.id === id);
+  if (entry) showShare(entry);
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+</script>
+</body>
+</html>
